@@ -1,0 +1,68 @@
+class Solution {
+    public int romanToInt(String s) {
+        int sum = 0;
+        while(s.length() != 0){
+            switch (s.charAt(s.length()-1)){
+                case 'I':
+                    sum++;
+                    s = s.substring(0,s.length()-1);
+                    break;
+                case 'V':
+                    if(s.length() > 1 && s.substring(s.length()-2, s.length()-1).equals("I")){
+                        sum+= 4;
+                        s = s.substring(0,s.length()-2);
+                        continue;
+                    }
+                    else sum+= 5;
+                    s = s.substring(0,s.length()-1);
+                    break;
+                case 'X':
+                    if(s.length() > 1 && s.substring(s.length()-2, s.length()-1).equals("I")){
+                        sum+= 9;
+                        s = s.substring(0,s.length()-2);
+                        continue;
+                    }
+                    else sum+= 10;
+                    s = s.substring(0,s.length()-1);
+                    break;
+                case 'L':
+                    if(s.length() > 1 && s.substring(s.length()-2, s.length()-1).equals("X")){
+                        sum+= 40;
+                        s = s.substring(0,s.length()-2);
+                        continue;
+                    }
+                    else sum+= 50;
+                    s = s.substring(0,s.length()-1);
+                    break;
+                case 'C':
+                    if(s.length() > 1 && s.substring(s.length()-2, s.length()-1).equals("X")){
+                        sum+= 90;
+                        s = s.substring(0,s.length()-2);         
+                       continue;
+                    }
+                    else sum+= 100;
+                    s = s.substring(0,s.length()-1);
+                    break;
+                case 'D':
+                    if(s.length() > 1 && s.substring(s.length()-2, s.length()-1).equals("C")){
+                        sum+= 400;
+                        s = s.substring(0,s.length()-2);
+                        continue;
+                    }
+                    else sum+= 500;
+                    s = s.substring(0,s.length()-1);
+                    break;
+                case 'M':
+                    if(s.length() > 1 && s.substring(s.length()-2, s.length()-1).equals("C")){
+                        sum+= 900;
+                        s = s.substring(0,s.length()-2);
+                        continue;
+                    }
+                    else sum+= 1000;
+                    s = s.substring(0,s.length()-1);
+                    break;
+            }
+        }
+        return sum;
+    }
+}
